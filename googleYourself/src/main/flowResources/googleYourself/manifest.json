@@ -10,7 +10,7 @@
 			"resourceAccessorHeaders":[],
 			"resourceStateful":false,
 			"resourceHeaders":[
-				["customheader1","Dave added a custom header"]
+				["customheader1","this is a custom header"]
 			],
 			"resourcePath":"files/widgets/googleYourself/index.html",
 			"resourceDescription":"",
