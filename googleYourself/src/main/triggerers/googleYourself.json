@@ -1,0 +1,13 @@
+[	
+	{
+		"classPath":"http",
+		"config":{
+			"name":"googleYourself",
+			"path":"/upstream/googleYourself",
+			"orchestratorName":"googleYourself@tutorials",
+			"id":"googleYourself",
+			"isRunning":true,
+			"orchestrationTimeout":180000
+		}
+	}
+]

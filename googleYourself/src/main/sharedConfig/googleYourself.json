@@ -1,0 +1,13 @@
+[
+	{
+		"referenceId":"tutorials_pathify_cookie_target",
+		"config":{
+			"scheme":"https",
+			"host":"tutorials.pathify.com",
+			"port":443,
+			"path":[
+				"api"
+			]
+		}
+	}
+]

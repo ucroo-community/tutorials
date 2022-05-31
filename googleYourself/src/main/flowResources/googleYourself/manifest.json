@@ -1,0 +1,20 @@
+{
+	"collectionId":"googleYourself",
+	"resources":[
+		{
+			"resourceId":"googleYourself_index",
+			"resourceCollectionId":"googleYourself",
+			"resourceStatusCode":200,
+			"resourceAccessorPath":"/widgets/googleYourself/index.html",
+			"resourceAccessorMethod":"GET",
+			"resourceAccessorHeaders":[],
+			"resourceStateful":false,
+			"resourceHeaders":[
+				["customheader1","Dave added a custom header"]
+			],
+			"resourcePath":"files/widgets/googleYourself/index.html",
+			"resourceDescription":"",
+			"resourceAuthFlow":"auth@tutorials"
+		}
+	]
+}

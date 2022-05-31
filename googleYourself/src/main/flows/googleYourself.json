@@ -1,0 +1,96 @@
+[
+	{
+		"name":"auth@tutorials",
+		"steps":[
+			"checkUser"
+		],
+		"processors":{
+			"checkUser":{
+				"className":"campusCookieValidator",
+				"config":{
+					"target":{
+						"referenceObject":"tutorials_pathify_cookie_target"
+					}
+				}
+			}
+		}
+	},
+	{
+		"name":"googleYourself@tutorials",
+		"steps":[
+			"detectUser",
+			"fetchFromGoogle",
+			"http",
+			"cacheGoogleResponse",
+			"createResponse"
+		],
+		"processors":{
+			"cacheGoogleResponse":{
+				"className":"dataMapper",
+				"config":{
+					"jsFunc":"payload.put('googleResponse',new JavaString(item.body().get(),'UTF-8'));
+return item;"
+				}
+			},
+			"fetchFromGoogle":{
+				"className":"jsDataStreamCreator",
+				"config":{
+					"jsFunc":"var user = fromJValue(payload.get('campusCookieValidatorUserJValue').get());
+
+var req = new code_model_flows_processors_http_HttpRequest(
+    'https', //scheme // java.lang.String:String
+    'www.google.com', //host, // java.lang.String:String
+    443, //port, // java.lang.Int:Int
+    newList(['search']), //path, // scala.collection.immutable.List[java.lang.String:String]
+    'GET', // verb, // java.lang.String:String
+    toKVList([
+      ['q',user.name]
+    ]), ////params, // scala.collection.immutable.List[scala.Tuple2[java.lang.String:Stringjava.lang.String:String]]
+    toKVList([
+    ]) //headers, // scala.collection.immutable.List[scala.Tuple2[java.lang.String:Stringjava.lang.String:String]]
+)
+
+return [req];"
+				}
+			},
+			"detectUser":{
+				"className":"campusCookieValidator",
+				"config":{
+					"permitUnauthenticated":true,
+					"target":{
+						"referenceObject":"tutorials_pathify_cookie_target"
+					}
+				}
+			},
+			"http":{
+				"className":"httpStreamProviderConfiguration",
+				"config":{ }
+			},
+			"createResponse":{
+				"className":"jsDataStreamCreator",
+				"config":{
+					"jsFunc":"var user = fromJValue(payload.get('campusCookieValidatorUserJValue').get());
+var body = {
+  when:new Date().getTime(),
+  message:'clock message',
+  user:user
+};
+payload.get('googleResponse').foreach(function(gr){
+  body.googleResponse = gr;
+});
+var bodyString = JSON.stringify(body);
+var resp = new code_model_flows_processors_http_HttpResponse(
+    207, // java.lang.Int:Int
+    toKVList([
+      ['Content-Type','application/json'],
+      ['customHeader1','customHeaderValue1'],
+      ['customHeader1','customHeaderValue1']
+    ]), // scala.collection.immutable.List[scala.Tuple2[java.lang.String:Stringjava.lang.String:String]]
+    Some(bodyString.getBytes('UTF-8')) // scala.Option[scala.Array[scala.Byte]]
+)
+return [resp];"
+				}
+			}
+		}
+	}
+]

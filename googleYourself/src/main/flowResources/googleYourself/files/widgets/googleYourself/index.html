@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="stylesheet" href="https://tutorials.pathify.com/styles/main.css"></link>
+		<link rel="stylesheet" href="https://tutorials.pathify.com/styles/branding/mmc.cs"></link>
+    <script type="text/javascript" src="/static/js/helpers/campusWidget.js"></script>
+	<script type="text/javascript">
+$(function(){
+	CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
+	$.ajax({
+		url:'/upstream/googleYourself',
+		method:'GET',
+		success:function(d){
+			console.log('htmlSuccess',d);
+			$(".message").text(d.message);
+			$(".when").text(d.when);
+			$("#loading").addClass("hidden");
+			$(".userEmail").text(d.user.email);
+			$(".googleResponse").attr("srcdoc",d.googleResponse);
+			CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
+		},
+		error:function(err){
+			console.log('htmlErr',err);
+			CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
+		}
+	});
+});
+    </script>
+	<style>
+#loading {
+  height:100vh;
+  width:100vw;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  z-order:-1;
+}
+    </style>
+  </head>
+  <body>
+    <div id="mainContent" class="bg-white pa-12">
+      <div class="h2">This is custom content</div>
+			<div>What: <span class="message"></span></div>
+			<div>When: <span class="when"></span></div>
+			<div>Email: <span class="userEmail"></span></div>
+      <iframe class="googleResponse"></iframe>
+		</div>
+    <div id="loading" class="bg-white">
+      <div class="h2 ma-12">
+      	Loading...
+      </div>
+    </div>
+  </body>
+</html>
