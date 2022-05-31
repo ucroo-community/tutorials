@@ -2,7 +2,7 @@
   <head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://tutorials.pathify.com/styles/main.css"></link>
-    <link rel="stylesheet" href="https://tutorials.pathify.com/styles/branding/mmc.cs"></link>
+    <link rel="stylesheet" href="https://tutorials.pathify.com/styles/branding/mm.css"></link>
     <script type="text/javascript" src="/static/js/helpers/campusWidget.js"></script>
     <script type="text/javascript">
       $(function(){
@@ -11,7 +11,6 @@
 	      url:'/upstream/googleYourself',
 	      method:'GET',
 	      success:function(d){
-		  console.log('htmlSuccess',d);
 		  $(".message").text(d.message);
 		  $(".when").text(d.when);
 		  $("#loading").addClass("hidden");
@@ -20,7 +19,7 @@
 		  CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
 	      },
 	      error:function(err){
-		  console.log('htmlErr',err);
+		  console.log('htmlErr',err); /*Pick your own error handling strategy*/
 		  CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
 	      }
 	  });
