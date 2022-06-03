@@ -1,12 +1,16 @@
 <html>
   <head>
+	  <!-- We're going to use this for lightweight data binding -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://tutorials.pathify.com/styles/main.css"></link>
     <link rel="stylesheet" href="https://tutorials.pathify.com/styles/branding/mm.css"></link>
+	  <!-- Relying on these styles (the ones which ship in your Flow server) will make us visually consistent -->
     <script type="text/javascript" src="/static/js/helpers/campusWidget.js"></script>
+	  <!-- This provides resizing behavior by collaborating with the host portal page -->
     <script type="text/javascript">
       $(function(){
 	  CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
+	      /*Size the container on load*/
 	  $.ajax({
 	      url:'/upstream/googleYourself',
 	      method:'GET',
@@ -17,6 +21,7 @@
 		  $(".userEmail").text(d.user.email);
 		  $(".googleResponse").attr("srcdoc",d.googleResponse);
 		  CampusUI.updateHeight(Math.max($("#mainContent").height(),150));
+		/*Size the container again after content is repopulated*/
 	      },
 	      error:function(err){
 		  console.log('htmlErr',err); /*Pick your own error handling strategy*/
