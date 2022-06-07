@@ -1,0 +1,37 @@
+[{
+    "email":"albert.einstein@college.edu",
+    "email_secondary":"albert.einstein@gmail.com",
+    "name":"Albert Einstein",
+    "first_name":"Albert",
+    "last_name":"Einstein",
+    "alternate_id":"1234",
+    "guid":"G12341234",
+    "sso_id":"SSO12341234",
+    "course":"Mathematics and Physics Teaching Diploma Program",
+    "department":"Mathematics",
+    "schools":["Prussian Academy of Sciences","Humboldt University of Berlin"],
+    "advisors":[
+        {"name": "Edwin Hubble", "email": "edwin.hubble@college.edu"},
+        {"name": "Mario Livio", "email": "mario.livio@college.edu"}
+    ],
+    "gpa":"2.1",
+    "phone":"+49 123 123 123",
+    "gender":"male",
+    "major":"Electrodynamics of Moving Bodies",
+    "description":"What a clever fellow",
+    "hidden":"false",
+    "start_year":"1900",
+    "year_of_completion":"1908",
+    "position":"Assistant Examiner, Level III",
+    "hometown":"Zurich",
+    "is_active":"true",
+    "is_enriched":"false",
+    "current_town":"Berlin",
+    "branding":"",
+    "military_affiliation":"none",
+    "roles":["German Physical Society","Kaiser Wilhelm Institute for Physics","Prussian Academy of Sciences","Patent Office","Staff","Faculty","Student","PhD"],
+    "campus":{
+	"name":"Bern",
+	"code":"BERN"
+    }
+}]
