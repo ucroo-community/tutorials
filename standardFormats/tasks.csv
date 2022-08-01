@@ -1,0 +1,2 @@
+title,text,email,alternate_id,sso_id,guid,definition_id,importance,due,expiry,is_required,is_complete,link,cta_text,category_name
+Example Task Title,Task text here,test@example.com,12345,123abc,135797531,TASK1,NOT_IMPORTANT,2022-08-01,2022-09-01,true,false,https://examplelink.com,"Click here!",Example Task Category
