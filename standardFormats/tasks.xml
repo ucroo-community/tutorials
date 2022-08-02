@@ -1,0 +1,17 @@
+<tasks>
+	<task>
+		<email>test@example.com</email>
+		<alternate_id>12345</alternate_id>
+		<sso_id>123abc</sso_id>
+		<guid>135797531</guid>
+		<title>Example Task Title</title>
+		<text>Task text here</text>
+		<definition_id>TASK1</definition_id>
+		<importance>IMPORTANT</importance>
+		<category_name>Example Task Category</category_name>
+		<expiry>2022-09-01</expiry>
+		<due>2022-08-01</due>
+		<cta_text>Click here!</cta_text>
+		<link>https://examplelink.com</link>
+	</task>
+</tasks>
