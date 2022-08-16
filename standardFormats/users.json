@@ -2,8 +2,6 @@
     "email":"albert.einstein@college.edu",
     "email_secondary":"albert.einstein@gmail.com",
     "name":"Albert Einstein",
-    "first_name":"Albert",
-    "last_name":"Einstein",
     "alternate_id":"1234",
     "guid":"G12341234",
     "sso_id":"SSO12341234",
