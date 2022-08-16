@@ -1,0 +1,14 @@
+<users>
+  <user>
+    <alternate_id>012345</alternate_id>
+    <charges>
+      <name>Meal Plan</name>
+      <amount>45.0</amount>
+    </charges>
+    <payments>
+      <name>Admin</name>
+      <amount>22</amount>
+    </payments>
+    <currency>AUD</currency>
+  </user>
+</users>

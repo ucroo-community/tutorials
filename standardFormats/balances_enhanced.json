@@ -1,0 +1,18 @@
+[
+  {
+    "alternate_id": "012345",
+    "charges": [
+      {
+        "name": "Meal Plan",
+        "amount": "45.0"
+      }
+    ],
+    "payments": [
+      {
+        "name": "Admin",
+        "amount": "22"
+      }
+    ],
+    "currency": "AUD"
+  }
+]

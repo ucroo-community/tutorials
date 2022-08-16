@@ -1,0 +1,9 @@
+<users>
+  <user>
+    <alternate_id>012345</alternate_id>
+    <balances>
+      <name>Meal Plan</name>
+      <amount>45.0</amount>
+    </balances>
+  </user>
+</users>
