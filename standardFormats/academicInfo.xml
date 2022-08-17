@@ -1,0 +1,32 @@
+<users>
+  <user>
+    <email>albert.einstein@college.edu</email>
+    <alternate_id>1234</alternate_id>
+    <guid>G12341234</guid>
+    <sso_id>SSO12341234</sso_id>
+    <campus>
+      <name>Bern</name>
+      <code>BERN</code>
+    </campus>
+    <course>Mathematics and Physics Teaching Diploma Program</course>
+    <department>Mathematics</department>
+    <schools>
+      <school>Prussian Academy of Sciences</school>
+      <school>Humboldt University of Berlin</school>
+    </schools>
+    <advisors>
+      <advisor>
+        <name>Edwin Hubble</name>
+        <email>edwin.hubble@college.edu</email>
+      </advisor>
+      <advisor>
+        <name>Mario Livio</name>
+        <email>mario.livio@college.edu</email>
+      </advisor>
+    </advisors>
+    <gpa>2.1</gpa>
+    <major>Electrodynamics of Moving Bodies</major>
+    <start_year>1900</start_year>
+    <year_of_completion>1908</year_of_completion>
+  </user>
+</users>

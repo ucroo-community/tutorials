@@ -1,0 +1,32 @@
+[
+  {
+    "alternate_id":"1234",
+    "sso_id":"SSO12341234",
+    "guid":"G12341234",
+    "email":"albert.einstein@college.edu",
+    "start_year":"1900",
+    "year_of_completion":"1908",
+    "campus":{
+      "name":"Bern",
+      "email":"BERN"
+    },
+    "course":"Mathematics and Physics Teaching Diploma Program",
+    "schools": [
+      "Prussian Academy of Sciences",
+      "Humboldt University of Berlin"
+    ],
+    "gpa":"2.1",
+    "major":"Electrodynamics of Moving Bodies",
+    "department":"Mathematics",
+    "advisors": [
+      {
+        "name":"Edwin Hubble",
+        "email":"edwin.hubble@college.edu"
+      },
+      {
+        "name":"Mario Livio",
+        "email":"mario.livio@college.edu"
+      }
+    ]
+  }
+]
