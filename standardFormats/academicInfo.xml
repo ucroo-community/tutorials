@@ -1,8 +1,6 @@
 <users>
   <user>
     <email>albert.einstein@college.edu</email>
-    <email_secondary>albert.einstein@gmail.com</email_secondary>
-    <name>Albert Einstein</name>
     <alternate_id>1234</alternate_id>
     <guid>G12341234</guid>
     <sso_id>SSO12341234</sso_id>
@@ -27,29 +25,8 @@
       </advisor>
     </advisors>
     <gpa>2.1</gpa>
-    <phone>+49 123 123 123</phone>
-    <gender>male</gender>
     <major>Electrodynamics of Moving Bodies</major>
-    <description>What a clever fellow</description>
-    <hidden>false</hidden>
     <start_year>1900</start_year>
     <year_of_completion>1908</year_of_completion>
-    <position>Assistant Examiner, Level III</position>
-    <hometown>Zurich</hometown>
-    <is_active>true</is_active>
-    <is_enriched>false</is_enriched>
-    <current_town>Berlin</current_town>
-    <branding></branding>
-    <military_affiliation>none</military_affiliation>
-    <roles>
-      <role>German Physical Society</role>
-      <role>Kaiser Wilhelm Institute for Physics</role>
-      <role>Prussian Academy of Sciences</role>
-      <role>Patent Office</role>
-      <role>Staff</role>
-      <role>Faculty</role>
-      <role>Student</role>
-      <role>PhD</role>
-    </roles>
   </user>
 </users>
