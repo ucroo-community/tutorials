@@ -31,5 +31,6 @@
     "campus":{
 	"name":"Bern",
 	"code":"BERN"
-    }
+    },
+    "profile_pic":"https://example-url.edu/profile-pic/SSO12341234.jpg"
 }]
