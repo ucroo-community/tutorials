@@ -1,0 +1,78 @@
+[
+    {
+        "name": "cache-cute-critters@tutorials",
+        "steps": [
+            "primeRss",
+            "executeRss",
+            "mapElementIntoJValue",
+            "update-cache",
+            "drainStreams"            
+        ],
+        "unused_steps": [
+            "mapElementIntoJValue",
+            "update-cache",
+            "drainStreams"
+        ],
+        "processors": {
+            "primeRss": {
+                "className": "jsDataStreamCreator",
+                "config": {
+                    "jsFunc": "
+                        var rssRequest = new code_data_rss_RssRequest(newList(['animals']),toMap({}).getOrElse(function(){return emptyMap();}))
+                        return [rssRequest];
+                    "
+                }
+            },
+            "executeRss": {
+                "className": "code_data_rss_RssFeed",
+                "config": {
+                    "parallelism": 1,
+                    "provider": {
+                        "referenceObject": "cute_critters_rss"
+                    }
+                }
+            },
+            "mapElementIntoJValue":{
+                "className":"dataMapper",
+                "config":{
+                    "jsFunc":"
+var resp = item.response();
+var critters = [];
+resp.items().foreach(function(critter){
+    var critter_item = {}
+    _.forEach(['guid','title','description','link'], function(key){
+        critter[key]().foreach(function(value){
+            critter_item[key] = value
+        })
+    })
+    critters.push(critter_item)
+})
+
+var responseToCache = {
+    title: resp.title(),
+    link: resp.link(),
+    description: resp.description(),
+    critters: critters
+}
+
+return new code_data_SimpleJsonData(toJValue(responseToCache))
+                    "
+                }
+            },
+            "drainStreams":{
+                "className":"streamDrainer",
+                "config":{}
+            },
+            "update-cache":{
+                "className":"updateMemory",
+                "config":{
+                    "category":"cute_critters@tutorials",
+                    "valueFunc":"return item;",
+                    "keyFunc":"
+                    return 'cute-critters';
+                    ",
+                }
+            }
+        }
+    }
+]

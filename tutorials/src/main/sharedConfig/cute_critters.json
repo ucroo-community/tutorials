@@ -1,0 +1,8 @@
+[
+    {
+        "referenceId": "cute_critters_rss",
+        "config": {
+                "root": "http://feeds.feedburner.com/"
+        }
+    }
+]
