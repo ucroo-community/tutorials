@@ -1,0 +1,25 @@
+[
+    {
+        "classPath": "http",
+        "config": {
+            "name": "cuteCrittersRetrieval",
+            "path": "/upstream/cute-critters",
+            "stateful": false,
+            "orchestratorName": "http-cute@tutorials",
+            "id": "cuteCrittersRetrieval",
+            "outputTransformerFunc": "return payload",
+            "isRunning": true
+        }
+    },
+    {
+        "classPath": "timer",
+        "config": {
+            "name": "cache-rss@tutorials",
+            "period": 300000,
+            "nonReentrant": true,
+            "orchestratorName": "cache-cute-critters@tutorials",
+            "id": "cache-rss@tutorials",
+            "isRunning": true
+        }
+    }
+]

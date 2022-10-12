@@ -3,16 +3,11 @@
         "name": "cache-cute-critters@tutorials",
         "steps": [
             "primeRss",
-            "executeRss",
+            "executeRss",        
             "mapElementIntoJValue",
             "update-cache",
             "drainStreams"            
-        ],
-        "unused_steps": [
-            "mapElementIntoJValue",
-            "update-cache",
-            "drainStreams"
-        ],
+            ],
         "processors": {
             "primeRss": {
                 "className": "jsDataStreamCreator",
@@ -32,45 +27,89 @@
                     }
                 }
             },
-            "mapElementIntoJValue":{
-                "className":"dataMapper",
-                "config":{
-                    "jsFunc":"
-var resp = item.response();
-var critters = [];
-resp.items().foreach(function(critter){
-    var critter_item = {}
-    _.forEach(['guid','title','description','link'], function(key){
-        critter[key]().foreach(function(value){
-            critter_item[key] = value
-        })
-    })
-    critters.push(critter_item)
-})
+            "mapElementIntoJValue": {
+                "className": "dataMapper",
+                "config": {
+                    "jsFunc": "
+                    var resp = item.response();
+                    var critters = []
 
-var responseToCache = {
-    title: resp.title(),
-    link: resp.link(),
-    description: resp.description(),
-    critters: critters
-}
+                    resp.items().foreach(function(critter){
+                        var critter_item = {}
+                        _.forEach(['guid','title','description','link'],function(key){
+                            critter[key]().foreach(function(value){
+                                critter_item[key]=value
+                            })
+                        })
+                        critters.push(critter_item)
 
-return new code_data_SimpleJsonData(toJValue(responseToCache))
+                    })
+
+                    var neededDataToCache = {
+                        title: resp.title(),
+                        description: resp.description(),
+                        critters: critters
+                    }
+
+                    return new code_data_SimpleJsonData(toJValue(neededDataToCache))
                     "
                 }
             },
-            "drainStreams":{
-                "className":"streamDrainer",
-                "config":{}
+            "update-cache": {
+                "className": "updateMemory",
+                "config": {
+                    "category": "cute_critters@tutorials",
+                    "valueFunc": "return item",
+                    "keyFunc": "return 'cute-critters'"
+                }
             },
-            "update-cache":{
-                "className":"updateMemory",
-                "config":{
-                    "category":"cute_critters@tutorials",
-                    "valueFunc":"return item;",
-                    "keyFunc":"
-                    return 'cute-critters';
-                    ",
+            "drainStreams": {
+                "className": "streamDrainer",
+                "config": {}
+            }
+
+
+        }
+    },
+    {
+        "name": "http-cute@tutorials",
+        "steps": [
+            "list_cache",
+            "aggregateStreams",
+            "createResponse"
+        ],
+        "processors": {
+            "list_cache": {
+                "className": "listMemory",
+                "config": {
+                    "category": "cute_critters@tutorials"
+                }
+            },
+            "aggregateStreams": {
+                "className": "streamAggregator",
+                "config": {
+                    "keyFunc": "return 'cute-critters'"
+                }
+            },
+            "createResponse": {
+                "className": "flatMap",
+                "config": {
+                    "func": "
+                        var request = payload.get('httpRequest').get();
+                        var allItems = ListHelper.map(item.value().apply('cute-critters'), function (critterData){return critterData.value()})
+                        var body = Some(jValueToString(jArray(allItems)).getBytes('UTF-8'))
+
+                        return [
+                            new code_model_flows_processors_http_HttpResponse(
+                                request.getSource(),
+                                request.getRequested(),
+                                request,
+                                200,
+                                newList([]),
+                                body
+                            )
+                        ]
+                    "
                 }
             }
         }
