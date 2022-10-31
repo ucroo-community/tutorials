@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js"
+    ></script>
+    <script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/lodash.js"></script>
+    <script type="text/javascript" src="/static/js/helpers/campusWidget.js"></script>
+  <script>
+      $(function () {
+        $.ajax({
+          method: "GET",
+            url: "/upstream/cute-critters", 
+            success: function(critterJSON) {
+
+
+                 let parsedCritters = JSON.parse(critterJSON)
+                 console.log("critters: parsed", parsedCritters)
+                        let content = document.createElement("div")
+                let element = document.getElementById("container");
+              element.appendChild(content)
+              _.forEach(parsedCritters[0].critters, function (critter) {
+              console.log("critter", critter.description + "</br><p>*****</p></br>")
+                content.innerHTML += "<h1>" + critter.title + "</h1>"
+                content.innerHTML += critter.description
+                content.innerHTML += "</br><p>*****</p></br>"
+                
+            });
+            },
+            error: function (error) {
+              console.log("I didn't work", error)
+            }
+        })
+      
+      })
+      
+    </script>
+  </head>
+  <body>
+    <div id="mainContainer">
+      <div id="container">
+          
+      </div>
+    </div>
+  </body>
+</html>
