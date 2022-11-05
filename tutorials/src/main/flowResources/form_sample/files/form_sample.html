@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Form</title>
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i"
+    rel="stylesheet"
+  />
+  <link href="https://demo.pathify.com/styles/main.css" rel="stylesheet"></link> 
+  <link
+    id="styles"
+    rel="stylesheet"
+    href="https://demo.pathify.com/styles/branding/demo.css"
+  />
+  <script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/static/js/helpers/campusWidget.js"></script>
+  <script>
+    function changeHandler(demo_input) {
+        let fieldValue = document.getElementById("demo_input").value = demo_input
+        console.log(fieldValue)
+    }
+    function submitChange() {
+        let input_value = document.getElementById("demo_input").value
+        document.getElementById("demo_input").placeholder = ""
+        console.log("changeSubmitted", input_value)
+        let data = {user_input: input_value}
+    $(function () {
+      $.ajax({
+        type: "POST",
+        url: "https://flow.tutorials.pathify.com/upstream/show-me-that-user-input",
+      contentType: "application/json; charset=utf-8",
+        dataType: "json",
+      data:JSON.stringify(data),
+        success: function (userInput) {
+          console.log("data", userInput);
+        },
+        error: function (err) {
+          console.log("error message", err);
+        },
+      });
+    });
+        document.getElementById("demo_input").value = ""
+        document.getElementById("form").classList.toggle("hidden")
+      document.getElementById("submitted").classList.toggle("hidden")
+      CampusUI.updateHeight($("#container").height())
+    }
+
+  </script>
+</head>
+<body>
+    <div id="container" class="bg-white pa-16 d-flex flex-column">
+      <div id="form">
+        <label 
+            id="demo_input_label" 
+            for="demo_input" 
+            class="form-label required"
+        >Input</label>
+        <input 
+            id="demo_input" 
+            onkeypress="changeHandler(value)"
+            class="form-control w-100 mb-16" 
+        />
+        <button 
+            class="btn md primary mb-40"
+            onclick="submitChange()"
+        ><span>Update</span></button>
+      </div>
+      <div id="submitted" class="hidden">
+        <p class="pb-40">Update submitted</p>
+      </div>
+
+    </div>
+
+</body>
+<script>CampusUI.updateHeight(Math.max($("#container").height(),150))</script>
+</html>
