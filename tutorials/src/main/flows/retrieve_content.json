@@ -1,0 +1,37 @@
+[
+    {
+        "name": "http_retrieve_input@form_builder",
+        "steps": [
+            "validateUser",
+            "locateUserInput"
+        ],
+        "processors": {
+            "validateUser": {
+                "className": "campusCookieValidator",
+                "config": {
+                    "target": {
+                        "referenceObject": "tutorials_cookie_target"
+                    }
+                }
+            },
+            "locateUserInput": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc":"
+                        var tutorialsUser = fromJValue(payload.get('campusCookieValidatorUserJValue').get());
+                        var request = payload.get('httpRequest').get();
+                        request.body().foreach(function(bytes) {
+                            var originalInput = EncodingHelper.rawEncodeBytes(bytes, 'UTF-8')
+                            tutorialsUser.userResponse = originalInput
+                        }
+
+                        )
+                    
+                        return [new code_data_SimpleData(tutorialsUser)]                    
+                    "
+                }
+            }
+
+        }
+    }
+]

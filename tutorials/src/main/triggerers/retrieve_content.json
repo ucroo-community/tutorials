@@ -1,0 +1,14 @@
+[
+    {
+        "classPath": "http",
+        "config": {
+            "name": "retrieveInput",
+            "path": "/upstream/retrieve_user_input",
+            "stateful": false,
+            "orchestratorName": "http_retrieve_input@form_builder",
+            "id": "retrieveInput",
+            "outputTransformerFunc": "return payload",
+            "isRunning": true
+        }
+    }
+]
