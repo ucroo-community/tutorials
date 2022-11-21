@@ -1,0 +1,58 @@
+[
+    {
+        "name": "tutorials_find_file_on_sftp@sftp",
+        "steps": [
+            "specifySftpDirectory",
+            "authenticateOntoSftp",
+            "mapThroughFilesOnSftp",
+            "drainStreams"
+        ],
+        "unused_steps": [
+
+            "runOrchestration"
+
+        ],
+        "processors": {
+            "drainStreams": {
+                "className": "streamDrainer",
+                "config": {}
+            },
+            "mapThroughFilesOnSftp": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc": "
+                        var files = []
+                        item.data().files().foreach(function(file){
+                            var filename = file.filename()
+                            if (_.startsWith(filename, 'user') && _.endsWith(filename,'json')) {
+                                files.push(new code_model_flows_processors_ssh_File(file.fullname()))
+                            }
+                        })
+                        return files;
+                    "
+                }
+
+            },
+            "specifySftpDirectory": {
+                "className": "jsDataStreamCreator",
+                "config": {
+                    "jsFunc": "return [
+                        new code_data_SimpleStringData('tutorials')
+                    ]"
+                }
+            },
+            "authenticateOntoSftp": {
+                "className": "sftpListProviderConfiguration",
+                "config": {
+                    "throttleCheckRetryLimit":-1,
+                    "server": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress"
+                    },
+                    "publicKeyAuthenticator": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress_publicKey"
+                    }
+                }
+            }
+        }
+    }
+]
