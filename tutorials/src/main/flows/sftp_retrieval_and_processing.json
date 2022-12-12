@@ -1,0 +1,77 @@
+[
+    {
+        "name": "tutorials_retrieve_file@sftp_processing",
+        "steps": [
+            "nameDirectoryInSftp",
+            "authenticateOntoSftp",
+            "mapFiles",
+            "drainStreams"
+        ],
+        "unused_steps": [
+            "runOrchestration"
+        ],
+        "processors": {
+            "drainStreams": {
+                "className": "streamDrainer",
+                "config": {}
+            },
+            "mapFiles": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc": "
+                        var files = []
+                        item.data().files().foreach(function(file) {
+                                var filename = file.filename()
+                                if (_.startsWith(filename,'enrichment')) {
+                                    files.push(new code_model_flows_processors_ssh_File(file.fullname()))
+                                }
+                            }
+                        )
+                        return files;
+                    "
+                }
+            },
+            "nameDirectoryInSftp": {
+                "className": "jsDataStreamCreator",
+                "config": {
+                    "jsFunc": "
+                        return [
+                            new code_data_SimpleStringData('tutorials')
+
+                        ]
+                    "
+                }
+            },
+            "authenticateOntoSftp": {
+                "className": "sftpListProviderConfiguration",
+                "config": {
+                    "server": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress"
+                    },
+                    "publicKeyAuthenticator": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress_publicKey"
+                    }
+                }
+            }
+        },
+        "consoleFilter":{
+            "trace":true,
+            "debug":true,
+            "info":true,
+            "warn":true,
+            "error":true,
+            "other":true,
+            "forceStreams":true,
+            "sendToCentralReporter":true,
+            "summarizeToCentral":true,
+            "saveStateToDb":true,
+            "synchronous":true,
+            "consoleMessageSynchronous":true,
+            "logPayload":true,
+            "logEnd":true,
+            "logMiddle":true,
+            "logStart":false,
+            "inMemoryConsoleLimit":0
+          }
+    }
+]
