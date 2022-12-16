@@ -5,12 +5,21 @@
             "nameDirectoryInSftp",
             "authenticateOntoSftp",
             "mapFiles",
+            "runOrchestration",
             "drainStreams"
         ],
-        "unused_steps": [
-            "runOrchestration"
-        ],
         "processors": {
+            "runOrchestration": {
+                "className": "flowRef",
+                "config": {
+                    "batchSize": 1, 
+                    "overrideConsoleLevel": true,
+                    "discardResults": true,
+                    "flowOrchestrator": "tutorials_process_file_content@sftp_processing",
+                    "includeState": "return true;",
+                    "runWhenEmpty": false
+                }
+            },
             "drainStreams": {
                 "className": "streamDrainer",
                 "config": {}
@@ -52,6 +61,197 @@
                         "referenceObject": "tutorials_julie_ssh_sftpIngress_publicKey"
                     }
                 }
+            }
+        },
+        "consoleFilter":{
+            "trace":true,
+            "debug":true,
+            "info":true,
+            "warn":true,
+            "error":true,
+            "other":true,
+            "forceStreams":true,
+            "sendToCentralReporter":true,
+            "summarizeToCentral":true,
+            "saveStateToDb":true,
+            "synchronous":true,
+            "consoleMessageSynchronous":true,
+            "logPayload":true,
+            "logEnd":true,
+            "logMiddle":true,
+            "logStart":false,
+            "inMemoryConsoleLimit":0
+          }
+    },
+    {
+        "name": "tutorials_process_file_content@sftp_processing",
+        "steps": [
+            "saveFile",
+            "sftpFetchConnector",
+            "parseFile",
+            "messages",
+            "enqueueMessages",
+            "drainStreams"
+        ],
+        "processors": {
+            "enqueueMessages": {
+                "className": "publishToDbQueue",
+                "config": {
+                    "queue":"tutorials_file_queue",
+                    "ensureBatches": true,
+                    "prioritizeMessageBatchId": true
+                }
+            },
+            "drainStreams": {
+                "className": "streamDrainer",
+                "config": {}
+            },
+            "messages": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc": "
+                        var body = ListHelper.jsonStringify(item.value())
+                        var message = new code_model_flows_processors_queues_QueueMessage(
+                            body,
+                            toKVMap({
+                                'type':'user'
+                            })
+                        )
+                        return [message]
+                    "
+                }
+            },
+            "parseFile": {
+                "className": "binaryToStreamingJson",
+                "config": {
+                    "transformKeys": "lowerCase",
+                    "encoding": "UTF-8",
+                    "target": [
+                        "*"
+                    ],
+                    "valueFunc": "
+                        //we have a UTF-8 file
+                        return item.bytes().get();
+                    "
+                }
+            },
+            "saveFile": {
+                "className": "savePayloadState",
+                "config": {
+                    "key": "remoteFile"
+                }
+            },
+            "sftpFetchConnector": {
+                "className": "sftpFetchProviderConfiguration",
+                "config": {
+                    "server": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress"
+                    },
+                    "publicKeyAuthenticator": {
+                        "referenceObject": "tutorials_julie_ssh_sftpIngress_publicKey"
+                    }
+                }
+            }
+        },
+        "consoleFilter":{
+            "trace":true,
+            "debug":true,
+            "info":true,
+            "warn":true,
+            "error":true,
+            "other":true,
+            "forceStreams":true,
+            "sendToCentralReporter":true,
+            "summarizeToCentral":true,
+            "saveStateToDb":true,
+            "synchronous":true,
+            "consoleMessageSynchronous":true,
+            "logPayload":true,
+            "logEnd":true,
+            "logMiddle":true,
+            "logStart":false,
+            "inMemoryConsoleLimit":0
+          }
+    },
+    {
+        "name": "tutorials_enrichUsersThroughUpdates@sftp_processing",
+        "steps": [
+            "processDequeuedUsers",
+            "saveUsers",
+            "drainStreams",
+            "mapUsersToPathifyUserQueries",
+            "genericPathifyDb",
+            "cachePathifyUsers",
+            "drainStreams"
+        ],
+        "unusedSteps": [
+
+        ],
+        "processors": {
+            "cachePathifyUsers": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc": "
+                        item.rows().foreach(function(row) {
+                            var obj = valuesFromDbRow(row)
+                            payload.put('campus_users_for_alternate_id_' + obj.alternate_id,[obj])
+                        })
+                        return [item];
+                    "
+                }
+            },
+            "genericPathifyDb": {
+                "className": "dbQuery",
+                "config": {
+                    "provider": {
+                        "referenceObject": "tutorials_pathify_db"
+                    }
+                }
+            },
+            "mapUsersToPathifyUserQueries": {
+                "className": "jsDataStreamCreator",
+                "config": {
+                    "jsFunc": "
+
+                        var altIds = payload.get('alternateIds').getOrElse(function(){ return []})
+                        var query = \"select DISTINCT id, name, first_name, last_name, alternate_id from users_user where alternate_id = ANY(?);\";
+
+                        return [
+                            new code_model_flows_processors_db_ParameterizedDbQuery(emptyConfig,query,newList([
+                                        new code_model_flows_processors_db_DbQueryParameter(1, new code_model_flows_processors_db_DbArray(newList(_.map(altIds, function(alt_id) {
+                                                        return new code_model_flows_processors_db_DbString(alt_id);
+                                                        }))))
+                            ]))
+                        ]
+
+                    "
+                }
+            },
+            "processDequeuedUsers": {
+                "className": "dataFlatMapper",
+                "config": {
+                    "jsFunc": "
+                       var obj = JSON.parse(item.body())
+
+                       var alternateIds = payload.get('alternateIds').getOrElse(function () {return []});
+
+                       alternateIds.push(obj['alternate_id'])
+
+                       payload.put('alternateIds', alternateIds);
+
+                       return [new code_data_SimpleData(obj)];
+                    "
+                }
+            },
+            "saveUsers": {
+                "className": "savePayloadState",
+                "config": {
+                    "key": "userSet"
+                }
+            },
+            "drainStreams": {
+                "className": "streamDrainer",
+                "config": {}
             }
         },
         "consoleFilter":{

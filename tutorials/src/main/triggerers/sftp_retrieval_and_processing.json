@@ -1,0 +1,17 @@
+[
+    {
+        "classPath": "dbQueue",
+        "config": {
+            "id": "dequeueUserEnrichment@sftpReader",
+            "name": "dequeueUserEnrichment@sftpReader",
+            "isRunning": true,
+            "orchestratorName": "tutorials_enrichUsersThroughUpdates@sftp_processing",
+            "queue": "tutorials_file_queue",
+            "implicitAck": true,
+            "maximumBatchSize": 10,
+            "maintainBatches": true,
+            "orchestrationTimeout": 180000,
+            "pollInterval": 30000
+        }
+    }
+]
