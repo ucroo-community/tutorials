@@ -3,11 +3,16 @@
     <email>albert.einstein@college.edu</email>
     <email_secondary>albert.einstein@gmail.com</email_secondary>
     <name>Albert Einstein</name>
+    <first_name>Albert</first_name>
+    <last_name>Einstein</last_name>
+    <preferred_name>Al</preferred_name>
     <alternate_id>1234</alternate_id>
     <guid>G12341234</guid>
     <sso_id>SSO12341234</sso_id>
-    <campus_name>Bern</campus_name>
-    <campus_code>BERN</campus_code>
+    <campus>
+      <name>Bern</name>
+      <code>BERN</code>
+    </campus>
     <course>Mathematics and Physics Teaching Diploma Program</course>
     <department>Mathematics</department>
     <schools>
@@ -49,5 +54,13 @@
       <role>Student</role>
       <role>PhD</role>
     </roles>
+    <profile_pic>https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg</profile_pic>
+    <id_card_photo>https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg</id_card_photo>
+    <id_card_valid_from>2023-02-15</id_card_valid_from>
+    <id_card_valid_through>2024-02-15</id_card_valid_through>
+    <library_id>B-7098666898</library_id>
+    <meal_plan_id>A429935</meal_plan_id>
+    <custom_id_1>A2345</custom_id_1>
+    <custom_id_2>518964356</custom_id_2>
   </user>
 </users>
