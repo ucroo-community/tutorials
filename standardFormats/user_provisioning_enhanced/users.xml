@@ -62,5 +62,8 @@
     <meal_plan_id>A429935</meal_plan_id>
     <custom_id_1>A2345</custom_id_1>
     <custom_id_2>518964356</custom_id_2>
+    <contact_email>albert.einstein@college.edu</contact_email>
+    <contact_phone>+49 123 123 123</contact_phone>
+    <contact_office_location>123 Office Dr. Suite 4 Kansas City, MO 64119</contact_office_location>
   </user>
 </users>

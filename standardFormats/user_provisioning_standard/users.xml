@@ -54,5 +54,9 @@
       <role>Student</role>
       <role>PhD</role>
     </roles>
+    <profile_pic>https://example-url.edu/profile-pic/SSO12341234.jpg</profile_pic>
+    <contact_email>albert.einstein@college.edu</contact_email>
+    <contact_phone>+49 123 123 123</contact_phone>
+    <contact_office_location>123 Office Dr. Suite 4 Kansas City, MO 64119</contact_office_location>
   </user>
 </users>
