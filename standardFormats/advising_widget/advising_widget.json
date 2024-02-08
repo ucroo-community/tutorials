@@ -1,0 +1,15 @@
+[
+  {
+    "alternate_id": "012345",
+    "appointments": [
+      {
+        "location": "Advising Office",
+        "datetime": "2024-02-10T13:00:00+00:00",
+        "organizer": {
+          "name": "John Carmack"
+        },
+        "type": "Tutoring"
+      }
+    ]
+  }
+]
