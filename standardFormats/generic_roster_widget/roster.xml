@@ -1,0 +1,44 @@
+<roster>
+  <item>
+    <course_id>100</course_id>
+    <course_link>https://example.course.edu/info</course_link>
+    <name>Example Course</name>
+    <course_code>100A</course_code>
+    <schedule>
+      <event>
+        <start>1714115736753</start>
+        <end>1714125836758</end>
+        <description>Event description</description>
+        <location>Campus, building, room number</location>
+        <summary>Event A Title</summary>
+      </event>
+      <event>
+        <start>1714115736753</start>
+        <end>1714125836758</end>
+        <recurrence>Mo, We, Fr</recurrence>
+        <until>1714225836758</until>
+        <description>Event description</description>
+        <location>Campus, building, room number</location>
+        <summary>Event B Title</summary>
+      </event>
+      <event>
+        <start>1714115736753</start>
+        <end>1714125836758</end>
+        <all_day>true</all_day>
+        <description>Event description</description>
+        <location>Campus, building, room number</location>
+        <summary>Event C Title</summary>
+      </event>
+    </schedule>
+    <students>
+      <student>
+        <name>John Smith</name>
+        <user_id>john.smith@example.edu</user_id>
+      </student>
+    </students>
+  </item>
+  <item>
+      <user_id>user.id@example.edu</user_id>
+      <courses>101,102,103</courses>
+  </item>
+</roster>

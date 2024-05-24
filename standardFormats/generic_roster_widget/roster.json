@@ -1,0 +1,48 @@
+[
+  {
+    "course_id": "100",
+    "course_code": "100A",
+    "name": "Example Course",
+    "course_link": "https://example.course.edu/info",
+    "schedule": [
+      {
+        "start": 1714115736753,
+        "end": 1714125836758,
+        "description": "Event description",
+        "location": "Campus, building, room number",
+        "summary": "Event A Title"
+      },
+      {
+        "start": 1714115736753,
+        "end": 1714125836758,
+        "recurrence":"Mo, We, Fr",
+        "until": 1714225836758,
+        "description": "Event description",
+        "location": "Campus, building, room number",
+        "summary": "Event B Title"
+      },
+      {
+        "start": 1714115736753,
+        "end": null,
+        "all_day":true,
+        "description": "Event description",
+        "location": "Campus, building, room number",
+        "summary": "Event C Title"
+      }
+    ],
+    "students": [
+      {
+        "name": "John Smith",
+        "user_id": "john.smith@example.edu"
+      }
+    ]
+  },
+  {
+    "user_id": "user.id@example.edu",
+    "courses": [
+       "101",
+       "102",
+       "103"
+    ]
+  }  
+]
