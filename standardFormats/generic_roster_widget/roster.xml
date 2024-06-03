@@ -39,6 +39,6 @@
   </item>
   <item>
       <user_id>user.id@example.edu</user_id>
-      <courses>101,102,103</courses>
+      <courses>100,101,102,103</courses>
   </item>
 </roster>
