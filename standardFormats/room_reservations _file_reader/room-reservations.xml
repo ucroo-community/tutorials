@@ -1,0 +1,23 @@
+<reservations>
+    <reservation>
+        <building_name>BUILDING_1</building_name>
+        <room_name>ROOM_4</room_name>
+        <start>2024-06-19T14:00:00.000Z</start>
+        <end>2024-06-19T16:00:00.000Z</end>
+        <external_id>F_BUILDING_1_Basement_ROOM_4_1</external_id>
+    </reservation>
+    <reservation>
+        <building_name>BUILDING_2</building_name>
+        <room_name>ROOM_5</room_name>
+        <start>2024-06-20T14:00:00.000Z</start>
+        <end>2024-06-20T16:00:00.000Z</end>
+        <external_id>F_BUILDING_2_Ground_ROOM_5_1</external_id>
+    </reservation>
+    <reservation>
+        <building_name>BUILDING_3</building_name>
+        <room_name>ROOM_6</room_name>
+        <start>2024-06-20T14:00:00.000Z</start>
+        <end>2024-06-20T16:00:00.000Z</end>
+        <external_id>F_BUILDING_3_Floor_ROOM_6_1</external_id>
+    </reservation>
+</reservations>

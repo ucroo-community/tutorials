@@ -1,0 +1,23 @@
+[
+    {
+        "building_name": "BUILDING_1",
+        "room_name": "ROOM_4",
+        "start": "2024-06-19T14:00:00.000Z",
+        "end": "2024-06-19T16:00:00.000Z",
+        "external_id": "F_BUILDING_1_Basement_ROOM_4_1"
+    },
+    {
+        "building_name": "BUILDING_2",
+        "room_name": "ROOM_5",
+        "start": "2024-06-20T14:00:00.000Z",
+        "end": "2024-06-20T16:00:00.000Z",
+        "external_id": "F_BUILDING_2_Ground_ROOM_5_1"
+    },
+    {
+        "building_name": "BUILDING_3",
+        "room_name": "ROOM_6",
+        "start": "2024-06-20T14:00:00.000Z",
+        "end": "2024-06-20T16:00:00.000Z",
+        "external_id": "F_BUILDING_3_Floor_ROOM_6_1"
+    }
+]
