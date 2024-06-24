@@ -1,0 +1,55 @@
+<rooms>
+  <item>
+    <name>ROOM_0</name>
+    <building_name>BUILDING_0</building_name>
+    <description>Room 0</description>
+    <building_description>Building 0</building_description>
+    <level>Basement</level>
+    <phone>+12123456789</phone>
+    <website>https://building.com/building0/room0.html</website>
+    <email>room_0_building_0@example.pathify.com</email>
+    <main_point_of_contact>Jane Smith</main_point_of_contact>
+    <departments>Drama,Photography</departments>
+    <searchable>true</searchable>
+    <reservable>true</reservable>
+    <opening_hours>
+      <period>
+        <day>1</day>
+        <opens>09:00</opens>
+        <closes>17:30</closes>
+      </period>
+      <period>
+        <day>2</day>
+        <opens>09:00</opens>
+        <closes>17:30</closes>
+      </period>
+      <period>
+        <day>3</day>
+        <opens>09:00</opens>
+        <closes>17:30</closes>
+      </period>
+      <period>
+        <day>4</day>
+        <opens>09:00</opens>
+        <closes>17:30</closes>
+      </period>
+      <period>
+        <day>5</day>
+        <opens>09:00</opens>
+        <closes>17:30</closes>
+      </period>
+    </opening_hours>
+    <reservable_hours>
+      <period>
+        <day>3</day>
+        <opens>10:00</opens>
+        <closes>16:00</closes>
+      </period>
+      <period>
+        <day>5</day>
+        <opens>11:00</opens>
+        <closes>12:30</closes>
+      </period>
+    </reservable_hours>
+  </item>
+</rooms>
