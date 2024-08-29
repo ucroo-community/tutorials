@@ -40,6 +40,7 @@
     <hometown>Zurich</hometown>
     <is_active>true</is_active>
     <is_enriched>false</is_enriched>
+    <messaging_enabled>true</messaging_enabled>
     <current_town>Berlin</current_town>
     <branding></branding>
     <military_affiliation>none</military_affiliation>

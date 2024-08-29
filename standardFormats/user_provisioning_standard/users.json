@@ -27,6 +27,7 @@
         "hometown":"Zurich",
         "is_active":true,
         "is_enriched":false,
+        "messaging_enabled": true,
         "current_town":"Berlin",
         "branding":"",
         "military_affiliation":"none",
