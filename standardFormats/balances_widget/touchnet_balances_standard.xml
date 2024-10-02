@@ -1,0 +1,17 @@
+<users>
+  <user>
+    <alternate_id>012345</alternate_id>
+    <balances>
+      <balance>
+        <name>Meal Plan</name>
+        <amount>45.0</amount>
+        <target>mealplan</target>
+      </balance>
+      <balance>
+        <name>Library Fine</name>
+        <amount>10.0</amount>
+      </balance>
+    </balances>
+    <currency>USD</currency>
+  </user>
+</users>
