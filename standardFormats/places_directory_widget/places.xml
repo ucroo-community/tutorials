@@ -51,6 +51,8 @@
         <closes>12:30</closes>
       </period>
     </reservable_hours>
+    <photos>https://building.com/building0/room0/image.jpg</photos>
+    <videos>https://building.com/building0/room0/video.mp4</videos>
   </item>
   <item>
     <name>BUILDING_1</name>
