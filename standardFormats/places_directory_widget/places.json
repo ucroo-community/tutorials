@@ -53,7 +53,52 @@
         "opens": "11:00",
         "closes": "12:30"
       }
-    ]
+    ],
+    "photos": [ "https://building.com/building0/room0/image.jpg" ],
+    "videos": [ "https://building.com/building0/room0/video.mp4" ]
+  },
+  {
+    "name": "BUILDING_1",
+    "description": "Building 1",
+    "levels": ["1", "2", "3", "4"],
+    "phone": "+12123456789",
+    "website": "https://building.com/building1.html",
+    "email": "building_1@example.pathify.com",
+    "main_point_of_contact": "John Doe",
+    "departments": [
+      "Math",
+      "Science"
+    ],
+    "searchable": true,
+    "opening_hours": [
+      {
+        "day": 1,
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "day": 2,
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "day": 3,
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "day": 4,
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "day": 5,
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "photos": [ "https://building.com/building1/image.jpg" ],
+    "videos": [ "https://building.com/building1/video.mp4" ]
   }
-  ]
+]
   
