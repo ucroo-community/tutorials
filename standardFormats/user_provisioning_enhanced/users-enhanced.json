@@ -31,6 +31,8 @@
         "messaging_enabled": true,
         "current_town":"Berlin",
         "branding":"",
+        "is_delegate": false,
+        "delegates": ["delegate1@test.pathify.com","delegate2@test.pathify.com"],
         "military_affiliation":"none",
         "roles":["German Physical Society","Kaiser Wilhelm Institute for Physics","Prussian Academy of Sciences","Patent Office","Staff","Faculty","Student","PhD"],
         "campus":{
