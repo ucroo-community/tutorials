@@ -51,5 +51,45 @@
         <closes>12:30</closes>
       </period>
     </reservable_hours>
+    <photos>https://building.com/building0/room0/image.jpg</photos>
+    <videos>https://building.com/building0/room0/video.mp4</videos>
+  </item>
+  <item>
+    <name>BUILDING_1</name>
+    <description>Building 1</description>
+    <levels>1,2,3,4</levels>
+    <phone>+12123456789</phone>
+    <website>https://building.com/building1.html</website>
+    <email>building_1@example.pathify.com</email>
+    <main_point_of_contact>John Doe</main_point_of_contact>
+    <departments>Math,Science</departments>
+    <searchable>true</searchable>
+    <opening_hours>
+        <day>1</day>
+        <opens>08:00</opens>
+        <closes>18:00</closes>
+    </opening_hours>
+    <opening_hours>
+        <day>2</day>
+        <opens>08:00</opens>
+        <closes>18:00</closes>
+    </opening_hours>
+    <opening_hours>
+        <day>3</day>
+        <opens>08:00</opens>
+        <closes>18:00</closes>
+    </opening_hours>
+    <opening_hours>
+        <day>4</day>
+        <opens>08:00</opens>
+        <closes>18:00</closes>
+    </opening_hours>
+    <opening_hours>
+        <day>5</day>
+        <opens>08:00</opens>
+        <closes>18:00</closes>
+    </opening_hours>
+    <photos>https://building.com/building1/image.jpg</photos>
+    <videos>https://building.com/building1/video.mp4</videos>
   </item>
 </rooms>
