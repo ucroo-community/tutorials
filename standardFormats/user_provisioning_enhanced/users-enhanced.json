@@ -13,8 +13,8 @@
         "department":"Mathematics",
         "schools":["Prussian Academy of Sciences","Humboldt University of Berlin"],
         "advisors":[
-            {"name": "Edwin Hubble", "email": "edwin.hubble@college.edu"},
-            {"name": "Mario Livio", "email": "mario.livio@college.edu"}
+            {"name": "Edwin Hubble", "email": "edwin.hubble@college.edu", "type": "Career Advisor"},
+            {"name": "Mario Livio", "email": "mario.livio@college.edu", "type": "Academic Advisor"}
         ],
         "gpa":"2.1",
         "phone":"+49 123 123 123",
