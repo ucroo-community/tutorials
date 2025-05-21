@@ -23,10 +23,12 @@
       <advisor>
         <name>Edwin Hubble</name>
         <email>edwin.hubble@college.edu</email>
+        <type>Career Advisor</type>
       </advisor>
       <advisor>
         <name>Mario Livio</name>
         <email>mario.livio@college.edu</email>
+        <type>Academic Advisor</type>
       </advisor>
     </advisors>
     <gpa>2.1</gpa>
