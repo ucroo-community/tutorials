@@ -44,6 +44,7 @@
     <is_active>true</is_active>
     <is_enriched>false</is_enriched>
     <messaging_enabled>true</messaging_enabled>
+    <has_logged_in>false</has_logged_in>
     <current_town>Berlin</current_town>
     <branding></branding>
     <is_delegate>false</is_delegate>
