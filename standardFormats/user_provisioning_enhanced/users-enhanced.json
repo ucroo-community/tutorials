@@ -29,6 +29,7 @@
         "is_active":true,
         "is_enriched":false,
         "messaging_enabled": true,
+        "has_logged_in": false,
         "current_town":"Berlin",
         "branding":"",
         "is_delegate": false,
