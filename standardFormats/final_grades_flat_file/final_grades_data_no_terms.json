@@ -1,0 +1,70 @@
+[
+  {
+    "sso_id": "ABCDEF",
+    "gpas": [
+      {
+        "name": "Weighted GPA",
+        "value": "1.95"
+      },
+      {
+        "name": "Term GPA",
+        "value": "3.16"
+      },
+      {
+        "name": "Cumulative GPA",
+        "value": "1.06"
+      }
+    ],
+    "grades": [
+      {
+        "course_title": "Introduction to Biology",
+        "course_code": "ITB01",
+        "grade": "D",
+        "grade_type": "string",
+        "midterm": true
+      },
+      {
+        "course_code": "BE01",
+        "course_title": "Beginner Education",
+        "grade": 34,
+        "grade_type": "integer",
+        "midterm": false
+      },
+      {
+        "course_code": "BAK101",
+        "course_title": "Introduction to Baking",
+        "grade": "Pass",
+        "grade_type": "string",
+        "midterm": true
+      },
+      {
+        "course_code": "FOL03",
+        "course_title": "Foundations of Literature",
+        "grade": "N/A",
+        "grade_type": "string",
+        "midterm": true
+      },
+      {
+        "course_code": "FOD04",
+        "course_title": "Foundations of Dance",
+        "grade": 85.12345,
+        "grade_type": "float",
+        "midterm": false
+      },
+      {
+        "course_code": "ITC07",
+        "course_title": "Introduction to Crochet",
+        "grade": 82,
+        "grade_type": "percentage",
+        "midterm": false
+      },
+      {
+        "course_code": "FOB10",
+        "course_title": "Foundations of Business",
+        "grade": null,
+        "grade_type": "string",
+        "midterm": false
+      }
+    ]
+  }
+]
