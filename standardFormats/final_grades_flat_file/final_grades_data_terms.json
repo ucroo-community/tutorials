@@ -1,0 +1,100 @@
+[
+  {
+    "sso_id": "ABCDEF",
+    "terms": [
+      {
+        "term": "Fall 2024",
+        "gpas": [
+          {
+            "name": "Overall GPA",
+            "value": 3.3
+          },
+          {
+            "name": "Cumulative GPA",
+            "value": 3.23
+          }
+        ],
+        "grades": [
+          {
+            "course_code": "BE01",
+            "course_title": "Beginner Education",
+            "grade": 34,
+            "grade_type": "integer",
+            "midterm": false
+          },
+          {
+            "course_code": "BAK101",
+            "course_title": "Introduction to Baking",
+            "grade": "Pass",
+            "grade_type": "string",
+            "midterm": true
+          },
+          {
+            "course_code": "FOL03",
+            "course_title": "Foundations of Literature",
+            "grade": "N/A",
+            "grade_type": "string",
+            "midterm": true
+          },
+          {
+            "course_code": "FOD04",
+            "course_title": "Foundations of Dance",
+            "grade": 85.12345,
+            "grade_type": "float",
+            "midterm": false
+          },
+          {
+            "course_code": "ITC07",
+            "course_title": "Introduction to Crochet",
+            "grade": 82,
+            "grade_type": "percentage",
+            "midterm": false
+          },
+          {
+            "course_code": "FOB10",
+            "course_title": "Foundations of Business",
+            "grade": null,
+            "grade_type": "string",
+            "midterm": false
+          }
+        ]
+      },
+      {
+        "term": "Spring 2024",
+        "gpas": [
+          {
+            "name": "Overall GPA",
+            "value": 3.33
+          },
+          {
+            "name": "Cumulative GPA",
+            "value": 3.21
+          }
+        ],
+        "grades": [
+          {
+            "course_code": "BAK101",
+            "course_title": "Introduction to Baking",
+            "grade": "A+",
+            "grade_type": "string",
+            "midterm": false
+          },
+          {
+            "course_code": "FOA01",
+            "course_title": "Foundations of Accounting",
+            "grade": "66.00",
+            "grade_type": "float",
+            "midterm": false
+          },
+          {
+            "course_code": "BM03",
+            "course_title": "Beginner Math",
+            "grade": "D",
+            "grade_type": "string",
+            "midterm": false
+          }
+        ]
+      }
+    ]
+  }
+]
