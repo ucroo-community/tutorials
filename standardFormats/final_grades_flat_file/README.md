@@ -7,7 +7,7 @@ File Formatting Notes and Recommendations
 
 -	The user identifier (`alternate_id` in the example file) key can be any one of the four Pathify primary identities. Which, alongside `alternate_id`, also includes `email`, `sso_id` and `guid`.
 
--	Depending on whether the data is grouped by terms will determine which of the file formats to you.
+-	Depending on whether the data is grouped by terms will determine which of the file formats to use.
 
 	-	If grouped by terms, follow the format example of `final_grades_data_terms.json`
 	-	Else `final_grades_data_no_terms.json`
