@@ -1,0 +1,303 @@
+[
+  {
+    "alternate_id": "first_alternate_id",
+    "courses": [
+      {
+        "course_id": "100",
+        "course_code": "100A",
+        "name": "Example Course",
+        "course_link": "https://example.course.edu/info",
+        "schedule": [
+          {
+            "start": 1714115736753,
+            "end": 1714125836758,
+            "description": "Event description",
+            "location": "Campus, building, room number",
+            "summary": "Event A Title"
+          },
+          {
+            "start": 1714115736753,
+            "end": 1714125836758,
+            "recurrence": "Mo, We, Fr",
+            "until": 1714225836758,
+            "description": "Event description",
+            "location": "Campus, building, room number",
+            "summary": "Event B Title"
+          },
+          {
+            "start": 1714115736753,
+            "end": null,
+            "all_day": true,
+            "description": "Event description",
+            "location": "Campus, building, room number",
+            "summary": "Event C Title"
+          }
+        ]
+      },
+      {
+        "course_id": "101",
+        "course_code": "CS101",
+        "name": "Introduction to Computer Science",
+        "course_link": "https://cs.university.edu/courses/cs101",
+        "schedule": [
+          {
+            "start": 1714464000000,
+            "end": 1714470600000,
+            "description": "Introduction to programming fundamentals and problem-solving techniques",
+            "location": "Science Building, Room 204",
+            "summary": "Lecture: Programming Basics"
+          },
+          {
+            "start": 1714550400000,
+            "end": 1714557000000,
+            "recurrence": "Tu, Th",
+            "until": 1729900800000,
+            "description": "Weekly lecture covering core CS concepts",
+            "location": "Science Building, Room 204",
+            "summary": "Regular Lecture"
+          },
+          {
+            "start": 1714723200000,
+            "end": null,
+            "all_day": true,
+            "description": "Final project presentations",
+            "location": "Computer Lab A",
+            "summary": "Final Project Due"
+          }
+        ]
+      },
+      {
+        "course_id": "102",
+        "course_code": "MATH201",
+        "name": "Calculus II",
+        "course_link": "https://math.university.edu/courses/calc2",
+        "schedule": [
+          {
+            "start": 1714377600000,
+            "end": 1714384200000,
+            "description": "Integration techniques and applications",
+            "location": "Mathematics Hall, Room 150",
+            "summary": "Lecture: Integration Methods"
+          },
+          {
+            "start": 1714464000000,
+            "end": 1714470600000,
+            "recurrence": "Mo, We, Fr",
+            "until": 1729900800000,
+            "description": "Regular calculus lecture and problem solving",
+            "location": "Mathematics Hall, Room 150",
+            "summary": "Calculus Lecture"
+          },
+          {
+            "start": 1714809600000,
+            "end": null,
+            "all_day": true,
+            "description": "Midterm examination covering chapters 1-5",
+            "location": "Testing Center",
+            "summary": "Midterm Exam"
+          }
+        ]
+      },
+      {
+        "course_id": "103",
+        "course_code": "ENG105",
+        "name": "English Literature",
+        "course_link": "https://english.university.edu/courses/lit105",
+        "schedule": [
+          {
+            "start": 1714550400000,
+            "end": 1714557000000,
+            "description": "Analysis of Victorian poetry and prose",
+            "location": "Humanities Building, Room 301",
+            "summary": "Seminar: Victorian Literature"
+          },
+          {
+            "start": 1714636800000,
+            "end": 1714643400000,
+            "recurrence": "We",
+            "until": 1729900800000,
+            "description": "Weekly literature discussion and analysis",
+            "location": "Humanities Building, Room 301",
+            "summary": "Literature Seminar"
+          },
+          {
+            "start": 1714982400000,
+            "end": null,
+            "all_day": true,
+            "description": "Research paper on chosen literary work due",
+            "location": "Online Submission",
+            "summary": "Research Paper Due"
+          }
+        ]
+      },
+      {
+        "course_id": "104",
+        "course_code": "PHYS201",
+        "name": "General Physics I",
+        "course_link": "https://physics.university.edu/courses/phys201",
+        "schedule": [
+          {
+            "start": 1714377600000,
+            "end": 1714384200000,
+            "description": "Mechanics and thermodynamics principles",
+            "location": "Physics Building, Lecture Hall B",
+            "summary": "Lecture: Classical Mechanics"
+          },
+          {
+            "start": 1714464000000,
+            "end": 1714470600000,
+            "recurrence": "Mo, We, Fr",
+            "until": 1729900800000,
+            "description": "Physics lecture with demonstrations",
+            "location": "Physics Building, Lecture Hall B",
+            "summary": "Physics Lecture"
+          },
+          {
+            "start": 1714636800000,
+            "end": 1714647600000,
+            "recurrence": "We",
+            "until": 1729900800000,
+            "description": "Hands-on physics experiments and data analysis",
+            "location": "Physics Lab 1",
+            "summary": "Laboratory Session"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "alternate_id": "second_alternate_id",
+    "courses": [
+      {
+        "course_id": "103",
+        "course_code": "ENG105",
+        "name": "English Literature",
+        "course_link": "https://english.university.edu/courses/lit105",
+        "schedule": [
+          {
+            "start": 1714550400000,
+            "end": 1714557000000,
+            "description": "Analysis of Victorian poetry and prose",
+            "location": "Humanities Building, Room 301",
+            "summary": "Seminar: Victorian Literature"
+          },
+          {
+            "start": 1714636800000,
+            "end": 1714643400000,
+            "recurrence": "We",
+            "until": 1729900800000,
+            "description": "Weekly literature discussion and analysis",
+            "location": "Humanities Building, Room 301",
+            "summary": "Literature Seminar"
+          },
+          {
+            "start": 1714982400000,
+            "end": null,
+            "all_day": true,
+            "description": "Research paper on chosen literary work due",
+            "location": "Online Submission",
+            "summary": "Research Paper Due"
+          }
+        ]
+      },
+      {
+        "course_id": "104",
+        "course_code": "PHYS201",
+        "name": "General Physics I",
+        "course_link": "https://physics.university.edu/courses/phys201",
+        "schedule": [
+          {
+            "start": 1714377600000,
+            "end": 1714384200000,
+            "description": "Mechanics and thermodynamics principles",
+            "location": "Physics Building, Lecture Hall B",
+            "summary": "Lecture: Classical Mechanics"
+          },
+          {
+            "start": 1714464000000,
+            "end": 1714470600000,
+            "recurrence": "Mo, We, Fr",
+            "until": 1729900800000,
+            "description": "Physics lecture with demonstrations",
+            "location": "Physics Building, Lecture Hall B",
+            "summary": "Physics Lecture"
+          },
+          {
+            "start": 1714636800000,
+            "end": 1714647600000,
+            "recurrence": "We",
+            "until": 1729900800000,
+            "description": "Hands-on physics experiments and data analysis",
+            "location": "Physics Lab 1",
+            "summary": "Laboratory Session"
+          }
+        ]
+      },
+      {
+        "course_id": "105",
+        "course_code": "HIST301",
+        "name": "Modern European History",
+        "course_link": "https://history.university.edu/courses/hist301",
+        "schedule": [
+          {
+            "start": 1714550400000,
+            "end": 1714557000000,
+            "description": "Industrial Revolution and its social impacts",
+            "location": "History Department, Room 205",
+            "summary": "Lecture: Industrial Revolution"
+          },
+          {
+            "start": 1714723200000,
+            "end": 1714729800000,
+            "recurrence": "Tu, Th",
+            "until": 1729900800000,
+            "description": "European history from 1800 to present",
+            "location": "History Department, Room 205",
+            "summary": "History Lecture"
+          },
+          {
+            "start": 1715068800000,
+            "end": null,
+            "all_day": true,
+            "description": "Historical analysis essay submission deadline",
+            "location": "Professor's Office",
+            "summary": "Essay Assignment Due"
+          }
+        ]
+      },
+      {
+        "course_id": "106",
+        "course_code": "CHEM101",
+        "name": "General Chemistry",
+        "course_link": "https://chemistry.university.edu/courses/chem101",
+        "schedule": [
+          {
+            "start": 1714464000000,
+            "end": 1714470600000,
+            "description": "Atomic structure and chemical bonding",
+            "location": "Chemistry Building, Room 101",
+            "summary": "Lecture: Atomic Theory"
+          },
+          {
+            "start": 1714723200000,
+            "end": 1714729800000,
+            "recurrence": "Mo, We, Fr",
+            "until": 1729900800000,
+            "description": "General chemistry principles and reactions",
+            "location": "Chemistry Building, Room 101",
+            "summary": "Chemistry Lecture"
+          },
+          {
+            "start": 1714809600000,
+            "end": 1714819200000,
+            "recurrence": "Fr",
+            "until": 1729900800000,
+            "description": "Laboratory experiments and chemical analysis",
+            "location": "Chemistry Lab 2",
+            "summary": "Chemistry Lab"
+          }
+        ]
+      }
+    ]
+  }
+]
