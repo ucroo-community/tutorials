@@ -1,7 +1,9 @@
 File Formatting Notes and Recommendations
 -----------------------------------------
 
--	The `datetime` value **must** be ISO-8601 compliant (eg. `YYYY-MM-DDTHH:MM:SSZ`).
+-	The date-time values `start`, `end`, and `until` should be UNIX timestamps.
+
+- Use two letter abbrevations for the day names in the `recurrence` field.
 
 -	The file name should start and end with whatever is configured in the recipe. Current defaults are a filename of `student_schedule_data` and of type `JSON`.
 
