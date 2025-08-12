@@ -1,0 +1,10 @@
+File Formatting Notes and Recommendations
+-----------------------------------------
+
+-	The date-time values `start`, `end`, and `until` should be UNIX timestamps.
+
+- Use two letter abbrevations for the day names in the `recurrence` field.
+
+-	The file name should start and end with whatever is configured in the recipe. Current defaults are a filename of `student_schedule_data` and of type `JSON`.
+
+-	The user identifier (`alternate_id` in the example file) key can be any one of the four Pathify primary identities. Which, alongside `alternate_id`, also includes `email`, `sso_id` and `guid`.
