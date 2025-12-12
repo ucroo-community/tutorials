@@ -2,8 +2,6 @@
 
 This repository demonstrates best practices for automating Flow bundle deployment using GitHub Actions with automatic multi-bundle discovery and upload.
 
-In the associated bundles, we use QA as an example. As noted in the `upload-all-bundles.yml` file, you must review carefully to make sure naming conventions match your schools' conventions.
-
 ## Disclaimer
 
 These best practices are provided as guidance and examples. While we aim to provide secure and reliable patterns, the ultimate responsibility for your deployment environment, security, and operational practices is your own. Please review, test, and adapt these workflows according to your organization's specific requirements and security policies.
