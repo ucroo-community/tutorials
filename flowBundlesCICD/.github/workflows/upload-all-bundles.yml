@@ -1,0 +1,113 @@
+# Multi-Bundle Upload Workflow
+#
+# This workflow automatically discovers and uploads all bundles in the bundles/ directory.
+# It runs automatically on push to main branch and can be triggered manually.
+#
+# Bundle Discovery:
+# - Scans all subdirectories in BUNDLES_DIR (default: bundles/)
+# - Extracts bundle ID from JSON files using jq
+# - Uploads each bundle using uploadBundle.sh
+#
+# Configuration:
+# - Set SCHOOL_ALIAS to your school's identifier (e.g., myschool, staging)
+# - Set BUNDLES_DIR to customize bundle location
+# - Ensure GitHub secrets are configured (FLOW_TOKEN, etc.)
+
+name: Upload All Bundles
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  upload-all-bundles:
+    runs-on: ubuntu-latest
+    env:
+      SCHOOL_ALIAS: staging
+      BUNDLES_DIR: bundles
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Checkout ihub-developer-scripts
+        uses: actions/checkout@v4
+        with:
+          repository: ucroo/ihub-developer-scripts
+          path: ihub-developer-scripts
+
+      - name: Install jq
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+          which jq || echo "jq not found in PATH"
+
+      - name: Set up credentials directory
+        run: |
+          mkdir -p /home/runner/creds
+          echo "${{ secrets.FLOW_TOKEN }}" > /home/runner/creds/${SCHOOL_ALIAS}.token
+          if [ -n "${{ secrets.FLOW_HOST }}" ]; then
+            echo "${{ secrets.FLOW_HOST }}" > /home/runner/creds/${SCHOOL_ALIAS}.flow
+          fi
+          if [ -n "${{ secrets.API_HOST }}" ]; then
+            echo "${{ secrets.API_HOST }}" > /home/runner/creds/${SCHOOL_ALIAS}.api
+          fi
+          if [ -n "${{ secrets.CURL_ARGS }}" ]; then
+            echo "${{ secrets.CURL_ARGS }}" > /home/runner/creds/${SCHOOL_ALIAS}.curl
+          fi
+
+      - name: Upload all bundles
+        run: |
+          set -e  # Exit on any error
+
+          if [ ! -d "${BUNDLES_DIR}" ]; then
+            echo "Bundles directory '${BUNDLES_DIR}' does not exist"
+            exit 1
+          fi
+
+          cd "${BUNDLES_DIR}"
+
+          # Find all bundle directories
+          for bundle_dir in */; do
+            if [ -d "$bundle_dir" ]; then
+              echo "Processing bundle directory: $bundle_dir"
+              cd "$bundle_dir"
+
+              # Find the JSON bundle file
+              json_file=$(find . -maxdepth 1 -name "*.json" | head -1)
+              if [ -n "$json_file" ]; then
+                raw_bundle_name=$(basename "$json_file" .json)
+
+                # Extract the bundle ID from the JSON file itself instead of filename
+                bundle_name=$(jq -r '.[0].id // empty' "$json_file")
+
+                if [ -z "$bundle_name" ] || [ "$bundle_name" = "null" ]; then
+                  echo "Could not find bundle ID in JSON file $json_file, falling back to filename"
+                  # Fallback: use directory name or basic filename cleaning
+                  bundle_name=$(echo "$raw_bundle_name" | sed 's/^v1_US_//' | sed 's/_US_/_/g')
+                fi
+
+                echo "Raw bundle name: $raw_bundle_name"
+                echo "Using bundle ID: $bundle_name"
+
+                /bin/bash ../../ihub-developer-scripts/uploadBundle.sh "$bundle_name" ${SCHOOL_ALIAS}
+
+                # Check if upload failed by examining response
+                if [ -f uploadBundleResponse.txt ]; then
+                  if grep -q "400\|error\|failed" uploadBundleResponse.txt; then
+                    echo "Upload failed for $bundle_name with error:"
+                    cat uploadBundleResponse.txt
+                    exit 1
+                  fi
+                fi
+
+                echo "Successfully uploaded $bundle_name"
+              else
+                echo "No JSON file found in $bundle_dir, skipping"
+              fi
+
+              cd ..
+            fi
+          done
+        env:
+          PATH: ${{ github.workspace }}/ihub-developer-scripts:/usr/bin:$PATH
