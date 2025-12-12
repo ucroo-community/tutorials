@@ -1,0 +1,162 @@
+# Flow Bundle CI/CD Best Practices
+
+This repository demonstrates best practices for automating Flow bundle deployment using GitHub Actions with automatic multi-bundle discovery and upload.
+
+In the associated bundles, we use QA as an example. As noted in the `upload-all-bundles.yml` file, you must review carefully to make sure naming conventions match your schools' conventions.
+
+## Disclaimer
+
+These best practices are provided as guidance and examples. While we aim to provide secure and reliable patterns, the ultimate responsibility for your deployment environment, security, and operational practices is your own. Please review, test, and adapt these workflows according to your organization's specific requirements and security policies.
+
+## Prerequisites
+
+1. Access to https://github.com/ucroo/ihub-developer-scripts
+2. Flow access token for your target environment
+3. GitHub repository with Actions enabled
+
+## Repository Structure
+
+```
+├── .github/workflows/
+│   └── upload-all-bundles.yml   # Multi-bundle upload workflow
+├── bundles/                     # Directory containing all bundles
+│   ├── example-bundle/          # Working example bundle
+│   │   └── example_US_bundle.json
+│   ├── sports-widget/           # Additional bundle example
+│   │   ├── bundle.json
+│   │   ├── resource-attachments/
+│   │   └── statefulBehaviour-attachments/
+│   └── ...                      # Additional bundles
+```
+
+## GitHub Actions Workflow
+
+### Multi-Bundle Upload (`upload-all-bundles.yml`)
+
+Automatically discovers and uploads all bundles in the `bundles/` directory.
+
+- **Trigger**: Automatic on push to `main` branch + manual dispatch
+- **Target**: All bundles in the required `bundles/` directory
+- **Bundle Discovery**: Scans subdirectories and extracts bundle IDs from JSON files
+- **Use case**: Automated deployment of all bundles
+
+## Configuration
+
+### Required GitHub Secrets
+
+Configure these as **repository secrets** in GitHub (Settings → Secrets and variables → Actions):
+
+| Secret       | Description                                             | Required    |
+| ------------ | ------------------------------------------------------- | ----------- |
+| `FLOW_TOKEN` | Flow access token                                       | ✅ Required |
+| `FLOW_HOST`  | Flow host URL (e.g., `https://flow.myschool.ucroo.org`) | ✅ Required |
+| `API_HOST`   | API host URL (e.g., `https://api.myschool.ucroo.org`)   | Optional    |
+| `CURL_ARGS`  | Additional curl arguments                               | Optional    |
+
+### Environment Configuration
+
+**Note:** Bundles must be located in a `bundles/` directory at the root of your repository. This is not configurable.
+
+## Setting Up Your Bundles
+
+1. Create a `bundles/` directory at the root of your repository (this location is required)
+2. Create subdirectories for each bundle:
+   ```
+   bundles/
+   ├── example-bundle/
+   │   └── example_US_bundle.json
+   ├── sports-widget/
+   │   ├── bundle.json
+   │   ├── resource-attachments/
+   │   └── statefulBehaviour-attachments/
+   ├── news-feed/
+   │   └── bundle.json
+   └── user-dashboard/
+       └── bundle.json
+   ```
+3. Download your bundles from Flow using `downloadBundle.sh`:
+   ```bash
+   # Example: Download a bundle
+   ~/ihub-developer-scripts/downloadBundle.sh "your_bundle_id" ci
+   ```
+   _Note, when creating widgets or resource collections, it is best practice to create all resources on Flow, then download the bundle, as opposed to creating all initial flows, widgets, triggers locally._
+4. Commit the bundle files to version control
+5. The workflow will automatically discover and upload all bundles on push to main
+
+## Bundle ID Resolution
+
+The workflow extracts the bundle ID directly from each bundle's JSON file:
+
+```bash
+bundle_id=$(jq -r '.[0].id // empty' "$json_file")
+```
+
+This ID is passed as-is to `uploadBundle.sh`, which handles any necessary filename encoding internally. If a JSON file doesn't contain a valid ID in the `[0].id` field, the workflow will fail for that bundle.
+
+**Example:** The `example-bundle` directory contains `example_US_bundle.json` with ID `example_bundle`. The workflow extracts this ID and passes it to the upload script.
+
+## Error Handling
+
+The workflow includes error handling that:
+
+- Fails the job on HTTP 400+ responses
+- Checks `uploadBundleResponse.txt` for error indicators
+- Provides clear error messages in GitHub Actions logs
+
+## Best Practices
+
+### Environment Management
+
+- Use separate repositories or branches for QA vs production deployments
+- Configure different GitHub secrets for each environment
+- Test with a QA environment before promoting to production
+
+### Bundle Organization
+
+- One bundle per directory in the `bundles/` folder
+- Include all assets (resources, attachments) in bundle directories
+- Use meaningful directory names that reflect bundle purpose
+
+### Version Control
+
+- Commit all bundle files including attachments
+- Use meaningful commit messages for bundle changes
+- Tag releases for production deployments
+
+### Security
+
+- Never commit access tokens or credentials
+- Use GitHub repository secrets for sensitive data
+- Limit access to production deployment workflows
+
+## Troubleshooting
+
+### Common Issues
+
+**"Bad Message 400: Ambiguous URI empty segment"**
+
+- Check `FLOW_HOST` secret - ensure no trailing slash
+- Verify host URL format
+
+**"No available flow token"**
+
+- Verify `FLOW_TOKEN` secret exists and is valid
+- Check token expiration
+
+**Bundle not found**
+
+- Ensure JSON file exists in bundle directory
+- Verify bundle ID in JSON matches expected format
+- Check file permissions
+
+### Debugging
+
+Enable debug output by adding to your workflow:
+
+```yaml
+- name: Debug bundle info
+  run: |
+    echo "Bundle file: $json_file"
+    echo "Bundle ID: $bundle_name"
+    jq '.[0].id' "$json_file"
+```
