@@ -1,0 +1,92 @@
+[
+  {
+    "id":"example_bundle",
+    "sharedConfigs":[],
+    "sharedProcessors":[],
+    "flows":[
+      {
+        "name":"ci_example_flow",
+        "metadata":{
+          "author":"539_Dan Lordan",
+          "created":1765575732428,
+          "modified":1765575750858
+        },
+        "steps":[
+          "createData",
+          "processData",
+          "outputData"
+        ],
+        "processors":{
+          "createData": {
+            "className": "jsDataStreamCreator",
+            "config": {
+              "name": "createData",
+              "classPath": "jsDataStreamCreator",
+              "jsFuncConfig": {
+                "advancedJsConfig": {
+                  "config": {},
+                  "choice": "default"
+                }
+              },
+              "jsFunc": "\n// Example: Create simple data\nreturn [new code_data_SimpleData({\n  message: 'Hello from Example Bundle!',\n  timestamp: new Date().getTime()\n})];\n"
+            }
+          },
+          "processData": {
+            "className": "jsDataStreamProcessor",
+            "config": {
+              "name": "processData",
+              "classPath": "jsDataStreamProcessor",
+              "jsFuncConfig": {
+                "advancedJsConfig": {
+                  "config": {},
+                  "choice": "default"
+                }
+              },
+              "jsFunc": "\n// Example: Process the data\nvar data = item.value();\ndata.processed = true;\ndata.processedAt = new Date().getTime();\nreturn [new code_data_SimpleData(data)];\n"
+            }
+          },
+          "outputData": {
+            "builtinProcessor": "drain"
+          }
+        },
+        "consoleFilter":{
+          "trace":false,
+          "debug":false,
+          "info":false,
+          "warn":false,
+          "error":true,
+          "other":false,
+          "forceStreams":false,
+          "sendToCentralReporter":false,
+          "summarizeToCentral":false,
+          "saveStateToDb":false,
+          "synchronous":true,
+          "consoleMessageSynchronous":false,
+          "logPayload":true,
+          "logOuterLefts":false,
+          "logInnerLefts":false,
+          "logInnerRights":false,
+          "logInnerSampleRateNumerator":0,
+          "logInnerSampleRateDenominator":1,
+          "logFromFirstElement":false,
+          "logEnd":true,
+          "logMiddle":false,
+          "logStart":false,
+          "ignoreMaintenanceModeAutoPatch":false,
+          "notifyEnd":false,
+          "notifyMiddle":false,
+          "notifyStart":false,
+          "inMemoryConsoleLimit":0
+        },
+        "description":"",
+        "testConfig":[],
+        "entityId":"f:ci_example_flow",
+        "bundle":"example_bundle",
+        "type":"flow"
+      }
+    ],
+    "statefulBehaviours":[],
+    "resourceCollections":[],
+    "configPanels":[]
+  }
+]

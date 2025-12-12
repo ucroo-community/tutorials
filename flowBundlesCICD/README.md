@@ -2,7 +2,7 @@
 
 This repository demonstrates best practices for automating Flow bundle deployment using GitHub Actions with automatic multi-bundle discovery and upload.
 
-In the associated bundles, we use staging as an example. As noted in the `upload-all-bundles.yml` file, you must review carefully to make sure naming conventions match your schools' conventions.
+In the associated bundles, we use QA as an example. As noted in the `upload-all-bundles.yml` file, you must review carefully to make sure naming conventions match your schools' conventions.
 
 ## Disclaimer
 
@@ -20,12 +20,12 @@ These best practices are provided as guidance and examples. While we aim to prov
 ├── .github/workflows/
 │   └── upload-all-bundles.yml   # Multi-bundle upload workflow
 ├── bundles/                     # Directory containing all bundles
-│   ├── sports-widget/           # Example bundle
-│   │   ├── v1_US_prestosports_US_scores_US_widget_US_2_US_0_US_0.json
+│   ├── example-bundle/          # Working example bundle
+│   │   └── example_US_bundle.json
+│   ├── sports-widget/           # Additional bundle example
+│   │   ├── bundle.json
 │   │   ├── resource-attachments/
 │   │   └── statefulBehaviour-attachments/
-│   ├── example-bundle/          # Simple example for reference
-│   │   └── bundle.json
 │   └── ...                      # Additional bundles
 ```
 
@@ -36,7 +36,7 @@ These best practices are provided as guidance and examples. While we aim to prov
 Automatically discovers and uploads all bundles in the `bundles/` directory.
 
 - **Trigger**: Automatic on push to `main` branch + manual dispatch
-- **Target**: All bundles in `bundles/` directory
+- **Target**: All bundles in the required `bundles/` directory
 - **Bundle Discovery**: Scans subdirectories and extracts bundle IDs from JSON files
 - **Use case**: Automated deployment of all bundles
 
@@ -46,29 +46,25 @@ Automatically discovers and uploads all bundles in the `bundles/` directory.
 
 Configure these as **repository secrets** in GitHub (Settings → Secrets and variables → Actions):
 
-| Secret       | Description               | Required    |
-| ------------ | ------------------------- | ----------- |
-| `FLOW_TOKEN` | Flow access token         | ✅ Required |
-| `FLOW_HOST`  | Flow host URL             | Optional    |
-| `API_HOST`   | API host URL              | Optional    |
-| `CURL_ARGS`  | Additional curl arguments | Optional    |
+| Secret       | Description                                             | Required    |
+| ------------ | ------------------------------------------------------- | ----------- |
+| `FLOW_TOKEN` | Flow access token                                       | ✅ Required |
+| `FLOW_HOST`  | Flow host URL (e.g., `https://flow.myschool.ucroo.org`) | ✅ Required |
+| `API_HOST`   | API host URL (e.g., `https://api.myschool.ucroo.org`)   | Optional    |
+| `CURL_ARGS`  | Additional curl arguments                               | Optional    |
 
 ### Environment Configuration
 
-The workflow uses environment variables that can be customized:
-
-```yaml
-env:
-  SCHOOL_ALIAS: myschool # Your school's identifier (e.g., myschool, harvard, ucla)
-  BUNDLES_DIR: bundles # Directory containing bundles
-```
+**Note:** Bundles must be located in a `bundles/` directory at the root of your repository. This is not configurable.
 
 ## Setting Up Your Bundles
 
-1. Create a `bundles/` directory in your repository
+1. Create a `bundles/` directory at the root of your repository (this location is required)
 2. Create subdirectories for each bundle:
    ```
    bundles/
+   ├── example-bundle/
+   │   └── example_US_bundle.json
    ├── sports-widget/
    │   ├── bundle.json
    │   ├── resource-attachments/
@@ -78,19 +74,26 @@ env:
    └── user-dashboard/
        └── bundle.json
    ```
-3. Download your initial bundles from Flow using `downloadBundle.sh`
+3. Download your bundles from Flow using `downloadBundle.sh`:
+   ```bash
+   # Example: Download a bundle
+   ~/ihub-developer-scripts/downloadBundle.sh "your_bundle_id" ci
+   ```
+   _Note, when creating widgets or resource collections, it is best practice to create all resources on Flow, then download the bundle, as opposed to creating all initial flows, widgets, triggers locally._
 4. Commit the bundle files to version control
 5. The workflow will automatically discover and upload all bundles on push to main
 
-## Bundle Naming and ID Resolution
+## Bundle ID Resolution
 
-The workflow automatically extracts bundle IDs from JSON files using:
+The workflow extracts the bundle ID directly from each bundle's JSON file:
 
 ```bash
-bundle_name=$(jq -r '.[0].id // empty' "$json_file")
+bundle_id=$(jq -r '.[0].id // empty' "$json_file")
 ```
 
-This ensures compatibility with the `uploadBundle.sh` script regardless of filename conventions.
+This ID is passed as-is to `uploadBundle.sh`, which handles any necessary filename encoding internally. If a JSON file doesn't contain a valid ID in the `[0].id` field, the workflow will fail for that bundle.
+
+**Example:** The `example-bundle` directory contains `example_US_bundle.json` with ID `example_bundle`. The workflow extracts this ID and passes it to the upload script.
 
 ## Error Handling
 
@@ -102,11 +105,11 @@ The workflow includes error handling that:
 
 ## Best Practices
 
-### School Environment Management
+### Environment Management
 
-- Use different school aliases for testing vs production (e.g., `myschool-staging`, `myschool`)
-- Keep school-specific secrets separate
-- Test with a staging school alias before promoting to production
+- Use separate repositories or branches for QA vs production deployments
+- Configure different GitHub secrets for each environment
+- Test with a QA environment before promoting to production
 
 ### Bundle Organization
 
