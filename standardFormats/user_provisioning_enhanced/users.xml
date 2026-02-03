@@ -2,7 +2,6 @@
   <user>
     <email>albert.einstein@college.edu</email>
     <email_secondary>albert.einstein@gmail.com</email_secondary>
-    <name>Albert Einstein</name>
     <first_name>Albert</first_name>
     <last_name>Einstein</last_name>
     <preferred_name>Al</preferred_name>
@@ -46,7 +45,7 @@
     <messaging_enabled>true</messaging_enabled>
     <has_logged_in>false</has_logged_in>
     <current_town>Berlin</current_town>
-    <branding></branding>
+    <theme></theme>
     <is_delegate>false</is_delegate>
     <delegates>
       <delegate>delegate1@test.pathify.com</delegate>

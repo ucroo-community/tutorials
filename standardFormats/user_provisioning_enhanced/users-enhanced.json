@@ -2,7 +2,6 @@
   {
     "email": "albert.einstein@college.edu",
     "email_secondary": "albert.einstein@gmail.com",
-    "name": "Albert Einstein",
     "first_name": "Albert",
     "last_name": "Einstein",
     "preferred_name": "Al",
@@ -42,7 +41,7 @@
     "messaging_enabled": true,
     "has_logged_in": false,
     "current_town": "Berlin",
-    "branding": "",
+    "theme": "",
     "is_delegate": false,
     "delegates": [
       "delegate1@test.pathify.com",

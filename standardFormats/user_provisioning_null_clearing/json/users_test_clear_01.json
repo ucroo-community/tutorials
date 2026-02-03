@@ -1,6 +1,7 @@
 [
   {
     "email": "albert.einstein@college.edu",
+    "email_secondary": "",
     "first_name": "Albert",
     "last_name": "",
     "preferred_name": "",
@@ -43,8 +44,6 @@
     "contact_email": "",
     "contact_phone": "",
     "contact_office_location": "",
-    "pronouns": "",
-    "name": "",
-    "email_secondary": ""
+    "pronouns": ""
   }
 ]
