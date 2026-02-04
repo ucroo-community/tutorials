@@ -16,18 +16,18 @@
     <gender></gender>
     <major></major>
     <description></description>
-    <hidden>false</hidden>
+    <hidden></hidden>
     <start_year></start_year>
     <year_of_completion></year_of_completion>
     <position></position>
     <hometown></hometown>
-    <is_active>true</is_active>
-    <is_enriched>false</is_enriched>
-    <messaging_enabled>true</messaging_enabled>
-    <has_logged_in>true</has_logged_in>
+    <is_active></is_active>
+    <is_enriched></is_enriched>
+    <messaging_enabled></messaging_enabled>
+    <has_logged_in></has_logged_in>
     <current_town></current_town>
     <theme></theme>
-    <is_delegate>false</is_delegate>
+    <is_delegate></is_delegate>
     <delegates></delegates>
     <military_affiliation></military_affiliation>
     <roles></roles>
