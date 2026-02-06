@@ -3,30 +3,30 @@
         "alternate_id": "55555",
         "balances": [
             {
-                "leaveTypeName": "Sick Leave",
-                "availableBalance": "50",
+                "leave_type_name": "Sick Leave",
+                "available_balance": "50",
                 "unit": "hours"
             },
             {
-                "leaveTypeName": "Vacation",
-                "availableBalance": "112",
+                "leave_type_name": "Vacation",
+                "available_balance": "112",
                 "unit": "hours"
             }
         ],
         "requests": [
             {
-                "leaveTypeName": "Sick Leave",
-                "startDate": "2024-02-02",
-                "endDate": "2024-02-04",
+                "leave_type_name": "Sick Leave",
+                "start_date": "2024-02-02",
+                "end_date": "2024-02-04",
                 "total": 24,
                 "unit": "hours",
                 "status": "pending",
                 "description": "Feeling unwell, need to recover."
             },
             {
-                "leaveTypeName": "Vacation",
-                "startDate": "2028-01-15",
-                "endDate": "2028-01-28",
+                "leave_type_name": "Vacation",
+                "start_date": "2028-01-15",
+                "end_date": "2028-01-28",
                 "total": 112,
                 "unit": "hours",
                 "status": "denied",
