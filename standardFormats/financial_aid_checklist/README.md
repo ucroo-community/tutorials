@@ -2,7 +2,7 @@
 
 This is the data shape for `Financial Aid Checklist`, expected by the Flat File Financial Aid Checklist Widget Recipe.
 
-| Column | Type | Required | Notes |
+| Key | Type | Required | Notes |
 |-------|------|----------|-------------|
 | aid_year | string | yes | Must be YYYY-YYYY format (e.g., 2024-2025). |
 | complete | boolean | yes | Whether the item is complete |
