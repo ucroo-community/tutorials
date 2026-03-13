@@ -1,0 +1,13 @@
+[
+  {
+    "alternate_id": "012345",
+    "financial_aid_checklist": [
+      {
+        "aid_year": "2024-2025",
+        "complete": true,
+        "title": "Title IV Authorization Form",
+        "url": "https://example.edu/titleiv"
+      }
+    ]
+  }
+]
