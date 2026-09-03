@@ -1,0 +1,53 @@
+<pathways>
+  <pathway>
+    <alternate_id>1234</alternate_id>
+    <sso_id>SSO12341234</sso_id>
+    <guid>G12341234</guid>
+    <email>albert.einstein@college.edu</email>
+    <definition_id>onboarding-pathway</definition_id>
+    <title>New Student Onboarding</title>
+    <category_name>onboarding</category_name>
+    <expiry>2026-12-31</expiry>
+    <task_groups>
+      <task_group>
+        <order>1</order>
+        <tasks>
+          <task>
+            <definition_id>submit-immunization</definition_id>
+            <title>Submit Immunization Records</title>
+            <text>Upload your records before move-in.</text>
+            <cta_text>Upload now</cta_text>
+            <link>https://example.edu/immunization</link>
+            <due>2026-09-01</due>
+            <expiry>2026-09-15</expiry>
+            <importance>30</importance>
+            <expiry_action>COMPLETE</expiry_action>
+            <order>0</order>
+            <milestone>false</milestone>
+            <milestone_title></milestone_title>
+            <milestone_message></milestone_message>
+            <milestone_notification>false</milestone_notification>
+          </task>
+        </tasks>
+      </task_group>
+    </task_groups>
+    <tasks>
+      <task>
+        <definition_id>welcome-survey</definition_id>
+        <title>Complete Welcome Survey</title>
+        <text>Tell us a bit about yourself before orientation.</text>
+        <cta_text>Take survey</cta_text>
+        <link>https://example.edu/welcome-survey</link>
+        <due>2026-08-25</due>
+        <expiry>2026-09-01</expiry>
+        <importance>10</importance>
+        <expiry_action>COMPLETE</expiry_action>
+        <order>0</order>
+        <milestone>true</milestone>
+        <milestone_title>Welcome!</milestone_title>
+        <milestone_message>You have completed onboarding.</milestone_message>
+        <milestone_notification>true</milestone_notification>
+      </task>
+    </tasks>
+  </pathway>
+</pathways>
