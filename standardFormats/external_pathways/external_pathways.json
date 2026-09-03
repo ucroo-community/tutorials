@@ -1,0 +1,53 @@
+[
+  {
+    "alternate_id": "1234",
+    "sso_id": "SSO12341234",
+    "guid": "G12341234",
+    "email": "albert.einstein@college.edu",
+    "definition_id": "onboarding-pathway",
+    "title": "New Student Onboarding",
+    "category_name": "onboarding",
+    "expiry": "2026-12-31",
+    "task_groups": [
+      {
+        "order": 1,
+        "tasks": [
+          {
+            "definition_id": "submit-immunization",
+            "title": "Submit Immunization Records",
+            "text": "Upload your records before move-in.",
+            "cta_text": "Upload now",
+            "link": "https://example.edu/immunization",
+            "due": "2026-09-01",
+            "expiry": "2026-09-15",
+            "importance": 30,
+            "expiry_action": "COMPLETE",
+            "order": 0,
+            "milestone": false,
+            "milestone_title": "",
+            "milestone_message": "",
+            "milestone_notification": false
+          }
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "definition_id": "welcome-survey",
+        "title": "Complete Welcome Survey",
+        "text": "Tell us a bit about yourself before orientation.",
+        "cta_text": "Take survey",
+        "link": "https://example.edu/welcome-survey",
+        "due": "2026-08-25",
+        "expiry": "2026-09-01",
+        "importance": 10,
+        "expiry_action": "COMPLETE",
+        "order": 0,
+        "milestone": true,
+        "milestone_title": "Welcome!",
+        "milestone_message": "You've completed onboarding.",
+        "milestone_notification": true
+      }
+    ]
+  }
+]
